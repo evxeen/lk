@@ -1,0 +1,61 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+$breakpoint: '<=900px';
+
+.layout {
+  padding: 20px 70px;
+
+  .navigation {
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 20px;
+    }
+
+    .searchWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .searchIcon {
+        width: 24px;
+        position: absolute;
+        left: 10px;
+        color: #888;
+      }
+
+      .searchInput {
+        font-family: $defaultFontFamily;
+        font-size: 15px;
+        width: 500px;
+        padding-left: 45px;
+        height: 45px;
+        border: 1px solid rgba(0, 0, 255, 0.2);
+        border-radius: 4px;
+        box-shadow: 5px 5px 1px 1px rgba(0, 0, 255, 0.2);
+        transition:
+          box-shadow 0.3s ease-in-out,
+          border 0.3s ease-in-out;
+
+        &:hover {
+          outline: none;
+          border: 1px solid rgba(0, 0, 255, 0.2);
+          box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+        }
+        &:focus {
+          outline: none;
+          border: 1px solid rgba(0, 0, 255, 0.2);
+          box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+        }
+      }
+    }
+  }
+
+  .content {
+  }
+}

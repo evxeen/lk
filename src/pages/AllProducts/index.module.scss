@@ -1,0 +1,44 @@
+.parent {
+  position: relative;
+  .sidebar {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 100vh;
+    padding: 20px;
+    margin-left: -70px;
+    background: white;
+
+    .categoryBlock {
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      width: 90%;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background: #e3e3f3;
+      }
+
+      img {
+        width: 50px;
+        margin-bottom: 15px;
+      }
+
+      &.active {
+        background: #e3e3f3;
+      }
+    }
+  }
+}
+
