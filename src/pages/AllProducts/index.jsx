@@ -11,6 +11,7 @@ import css from "./index.module.scss";
 export const AllProducts = () => {
   const [categories, setCategories] = useState({});
   const [activeCategory, setActiveCategory] = useState(0);
+  const [activeSidebar, setActiveSidebar] = useState(false);
 
   useEffect(() => {
     const formattedCategories = Object.keys(products).reduce((acc, key) => {
@@ -23,6 +24,10 @@ export const AllProducts = () => {
 
   const handleCategoryClick = (index) => {
     setActiveCategory(index);
+  };
+
+  const handleSidebarActive = (isActive) => {
+    setActiveSidebar(isActive);
   };
 
   const tableHeadElements = [
@@ -46,21 +51,40 @@ export const AllProducts = () => {
   ];
 
   return (
-    <div className={css.parent}>
-      <div className={css.sidebar}>
-        {Object.entries(categories).map(([category, image], index) => (
-          <div
-            onClick={() => handleCategoryClick(index)}
-            className={`${css.categoryBlock} ${
-              index === activeCategory ? css.active : ""
-            }`}
-            key={category}
-          >
-            <img src={image} alt={category} />
-            {category}
-          </div>
-        ))}
+    <div className={css.page}>
+      {activeSidebar ? (
+        <div
+          className={css.overlay}
+          onClick={() => handleSidebarActive(false)}
+        ></div>
+      ) : (
+        ""
+      )}
+      <div className={css.sidebarContainer}>
+        <div
+          className={`${css.sidebar} ${activeSidebar ? css.sidebarActive : ""}`}
+        >
+          {Object.entries(categories).map(([category, image], index) => (
+            <div
+              onClick={() => handleCategoryClick(index)}
+              className={`${css.categoryBlock} ${
+                index === activeCategory ? css.active : ""
+              }`}
+              key={category}
+            >
+              <img src={image} alt={category} />
+              {category}
+            </div>
+          ))}
+        </div>
+        <div
+          className={css.buttonOpen}
+          onClick={() => handleSidebarActive(!activeSidebar)}
+        >
+          Каталог
+        </div>
       </div>
+
       <table>
         <thead>
           <tr>
